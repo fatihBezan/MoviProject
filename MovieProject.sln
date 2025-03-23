@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8ED82E63-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "projects", "projects", "{242148D7-8EE3-42A4-B041-5A8120D70304}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviProject.Model", "src\projects\MoviProject.Model\MoviProject.Model.csproj", "{A17AE22C-24D9-4F4E-A918-0F135E84AC09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieProject.Model", "src\projects\MoviProject.Model\MovieProject.Model.csproj", "{A17AE22C-24D9-4F4E-A918-0F135E84AC09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviProject.DataAccess", "src\projects\MoviProject.DataAccess\MoviProject.DataAccess.csproj", "{AC2915FA-7154-4159-A99E-03E18E7F6EF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieProject.DataAccess", "src\projects\MoviProject.DataAccess\MovieProject.DataAccess.csproj", "{AC2915FA-7154-4159-A99E-03E18E7F6EF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieProject.Service", "src\projects\MovieProject.Service\MovieProject.Service.csproj", "{261C11EE-C6E0-47DA-AAA4-3713207D366D}"
 EndProject
