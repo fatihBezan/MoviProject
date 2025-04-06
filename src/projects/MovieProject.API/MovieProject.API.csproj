@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MovieProject.Service\MovieProject.Service.csproj" />
     <ProjectReference Include="..\MoviProject.DataAccess\MovieProject.DataAccess.csproj" />
   </ItemGroup>
 

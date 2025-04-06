@@ -7,9 +7,16 @@ using MoviProject.Model.Entities;
 
 namespace MovieProject.DataAccess.Repositories.Concretes;
 
-public class DirectorRepository : IDirectorRepository
+public class DirectorRepository : EfRepositoryBase<Director, long, BaseDbContext>, IDirectorRepository
 {
+    public DirectorRepository(BaseDbContext context) : base(context)
+    {
+    }
 
+    public List<Director> GetAllByNameContains(string name) 
+    { 
+        return Context.Directors.Where(x=> x.Name.Contains(name,StringComparison.OrdinalIgnoreCase)).ToList();    
+    }
 
 
     //private readonly BaseDbContext _dbContext;
@@ -70,4 +77,5 @@ public class DirectorRepository : IDirectorRepository
 
     //    return entity;
     //}
+
 }

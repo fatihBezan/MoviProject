@@ -10,7 +10,7 @@ public abstract class EfRepositoryBase<TEntity, TId,TContext> : IRepository<TEnt
     where TEntity : Entity<TId>
     where TContext:DbContext
 {
-     TContext Context { get; }
+    protected TContext Context { get; }
 
     public EfRepositoryBase(TContext context)
     {

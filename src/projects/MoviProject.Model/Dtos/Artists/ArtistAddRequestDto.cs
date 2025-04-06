@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace MoviProject.Model.Dtos.Artists;
 
-public sealed record  class ArtistAddRequestDto
+public sealed record   ArtistAddRequestDto
 {
     public string? Name { get; init; }
 
