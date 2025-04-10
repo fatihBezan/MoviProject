@@ -1,7 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using MovieProject.DataAccess.Repositories.Concretes;
 using MovieProject.Service.Abstracts;
 using MovieProject.Service.Concretes;
-using MovieProject.Service.Mappers;
+using MovieProject.Service.Mappers.Categories;
+using MovieProject.Service.Mappers.Profiles;
 using MoviProject.DataAccess.Contexts;
 using MoviProject.DataAccess.Repositories.Abstracts;
 
@@ -15,11 +17,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ICategoryService,CategoryService>(); //IoC kaydý
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
-builder.Services.AddScoped<CategoryMapper>();
+builder.Services.AddScoped<ICategoryMapper,CategoryAutoMapper>();
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<BaseDbContext>();
+builder.Services.AddDbContext<BaseDbContext>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"));
+});
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

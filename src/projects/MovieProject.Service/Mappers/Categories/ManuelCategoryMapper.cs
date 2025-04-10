@@ -1,14 +1,12 @@
-﻿
-
-using MoviProject.Model.Dtos.Categories;
+﻿using MoviProject.Model.Dtos.Categories;
 using MoviProject.Model.Entities;
 
-namespace MovieProject.Service.Mappers;
+namespace MovieProject.Service.Mappers.Categories;
 
 //polimorfizim de classlar birbiri üzerinde dönüşüm sağlayabiliyorsa  ->dynamic polimorfizim
 //overloding->static polymorphism
 
-public sealed class CategoryMapper
+public sealed class ManuelCategoryMapper:ICategoryMapper
 {
     public Category ConvertToEntity(CategoryAddRequestDto dto)
     {
@@ -31,17 +29,17 @@ public sealed class CategoryMapper
         return new CategoryResponseDto(category.Id, category.Name);
     }
 
-    public List<CategoryResponseDto> ConvertToResponseList(List<Category> categories) 
+    public List<CategoryResponseDto> ConvertToResponseList(List<Category> categories)
     {
-       // List<CategoryResponseDto> responseDtos = new();
-       // foreach (var category in categories)
-       // {
-       //     //CategoryResponseDto responseDto = ConvertToResponse(category);
-       //     responseDtos.Add(ConvertToResponse(category));
-       // }
+        // List<CategoryResponseDto> responseDtos = new();
+        // foreach (var category in categories)
+        // {
+        //     //CategoryResponseDto responseDto = ConvertToResponse(category);
+        //     responseDtos.Add(ConvertToResponse(category));
+        // }
 
-       //return responseDtos;
+        //return responseDtos;
 
-        return categories.Select(x=> ConvertToResponse(x)).ToList();
+        return categories.Select(x => ConvertToResponse(x)).ToList();
     }
 }
