@@ -2,12 +2,24 @@
 
 using Microsoft.EntityFrameworkCore;
 using MoviProject.Model.Entities;
+using System.Reflection;
 
 namespace MoviProject.DataAccess.Contexts;
 
 public sealed class BaseDbContext:DbContext
 {
 
+
+
+    public BaseDbContext(DbContextOptions opt):base(opt)
+    {
+        
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //{
