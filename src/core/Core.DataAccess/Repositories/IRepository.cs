@@ -1,6 +1,9 @@
 ﻿
 
 using Core.DataAccess.Entities;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+
 
 namespace Core.DataAccess.Repositories;
 
@@ -14,7 +17,11 @@ public  interface IRepository<TEntity,TId> where TEntity : Entity<TId>
 
     TEntity? GetById(TId id);
 
-    List<TEntity> GetAll(bool include=true);
+    List<TEntity> GetAll(Expression<Func<TEntity,bool>>? filter=null, bool include=true,bool enableTracking=true);
+
+    TEntity? GetEntity(Expression<Func<TEntity, bool>>? filter, bool include = true, bool enableTracking = true);
+
+    bool Any(Expression<Func<TEntity, bool>>? filter=null, bool enableTracking = true);
 
     IQueryable<TEntity> Query();
 

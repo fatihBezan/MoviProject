@@ -3,6 +3,7 @@
 
 using Core.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Core.DataAccess.Repositories;
 
@@ -33,9 +34,21 @@ public abstract class EfRepositoryBase<TEntity, TId,TContext> :IRepository<TEnti
         return entity;  
     }
 
-    public List<TEntity> GetAll(bool include = true)
+    public List<TEntity> GetAll(Expression<Func<TEntity, bool>>? filter = null,bool include = true, bool enableTracking = true)
     {
         IQueryable<TEntity> query = Context.Set<TEntity>();
+
+        if(filter is not null )
+        {
+            query = query.Where(filter);
+        }
+
+        if (enableTracking is false)
+        {
+            query= query.AsNoTracking();
+        }
+
+
         if (include is false)
         {
             query = query.IgnoreAutoIncludes();
@@ -62,5 +75,15 @@ public abstract class EfRepositoryBase<TEntity, TId,TContext> :IRepository<TEnti
     public IQueryable<TEntity> Query()
     {
         return Context.Set<TEntity>();
+    }
+
+    public TEntity? GetEntity(Expression<Func<TEntity, bool>>? filter, bool include = true, bool enableTracking = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Any(Expression<Func<TEntity, bool>>? filter = null, bool enableTracking = true)
+    {
+        throw new NotImplementedException();
     }
 }

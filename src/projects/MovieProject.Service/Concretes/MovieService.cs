@@ -38,6 +38,17 @@ public sealed class MovieService : IMovieService
         return movie.ImageUrl;
     }
 
+    public void Delete(Guid id)
+    {
+       var movie=_movieRepository.GetById(id);
+        if (movie != null) 
+        {
+            //exception fırlat
+        }
+
+        _movieRepository.Delete(movie);
+    }
+
     public void Delete(int id)
     {
         throw new NotImplementedException();
@@ -52,7 +63,11 @@ public sealed class MovieService : IMovieService
 
     public List<MovieResponseDto> GetAllByCategory(int id)
     {
-        throw new NotImplementedException();
+        var movies = _movieRepository.GetAll(filter:x=>x.CategoryId==id,enableTracking:false);
+          
+        var responses = _mapper.Map<List<MovieResponseDto>>(movies);
+        return responses;
+
     }
 
     public List<MovieResponseDto> GetAllByDirectorId(long id)

@@ -32,4 +32,10 @@ public class MoviesController : ControllerBase
         var result =_movieService.GetAll();
         return Ok(result);  
     }
+    [HttpGet("getallcategoryid")]
+    public IActionResult GetAllByCategory(int categoryId) 
+    { 
+        var result =_movieService.GetAllByCategory(categoryId);
+        return Ok(result);
+    }
 }
