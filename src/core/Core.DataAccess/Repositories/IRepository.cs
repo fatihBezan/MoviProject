@@ -19,7 +19,7 @@ public  interface IRepository<TEntity,TId> where TEntity : Entity<TId>
 
     List<TEntity> GetAll(Expression<Func<TEntity,bool>>? filter=null, bool include=true,bool enableTracking=true);
 
-    TEntity? GetEntity(Expression<Func<TEntity, bool>>? filter, bool include = true, bool enableTracking = true);
+    TEntity? Get(Expression<Func<TEntity, bool>>? filter, bool include = true, bool enableTracking = true);
 
     bool Any(Expression<Func<TEntity, bool>>? filter=null, bool enableTracking = true);
 

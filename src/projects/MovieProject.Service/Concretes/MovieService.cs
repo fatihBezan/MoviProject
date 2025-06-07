@@ -40,7 +40,7 @@ public sealed class MovieService : IMovieService
 
     public void Delete(Guid id)
     {
-       var movie=_movieRepository.GetById(id);
+       var movie=_movieRepository.Get(x=>x.Id==id,enableTracking:false);
         if (movie != null) 
         {
             //exception fırlat
