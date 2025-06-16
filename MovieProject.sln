@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieProject.API", "src\pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataAccess", "src\core\Core.DataAccess\Core.DataAccess.csproj", "{13C1361F-B8DE-44E8-BCB7-8B9E3E984E74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns", "src\core\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj", "{E17CADBA-20BF-4814-A1ED-37DB954B6F11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{13C1361F-B8DE-44E8-BCB7-8B9E3E984E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13C1361F-B8DE-44E8-BCB7-8B9E3E984E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13C1361F-B8DE-44E8-BCB7-8B9E3E984E74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E17CADBA-20BF-4814-A1ED-37DB954B6F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E17CADBA-20BF-4814-A1ED-37DB954B6F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E17CADBA-20BF-4814-A1ED-37DB954B6F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E17CADBA-20BF-4814-A1ED-37DB954B6F11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +63,9 @@ Global
 		{261C11EE-C6E0-47DA-AAA4-3713207D366D} = {242148D7-8EE3-42A4-B041-5A8120D70304}
 		{09085DC6-8C01-4CC9-B768-E0114674EA5B} = {242148D7-8EE3-42A4-B041-5A8120D70304}
 		{13C1361F-B8DE-44E8-BCB7-8B9E3E984E74} = {8ED82E63-D556-4D21-AE3C-C769DF196FE1}
+		{E17CADBA-20BF-4814-A1ED-37DB954B6F11} = {8ED82E63-D556-4D21-AE3C-C769DF196FE1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC869D56-275C-420F-B603-EF6825BC02DB}
 	EndGlobalSection
 EndGlobal

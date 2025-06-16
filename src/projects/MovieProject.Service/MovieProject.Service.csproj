@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\core\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\core\Core.DataAccess\Core.DataAccess.csproj" />
     <ProjectReference Include="..\MoviProject.DataAccess\MovieProject.DataAccess.csproj" />
     <ProjectReference Include="..\MoviProject.Model\MovieProject.Model.csproj" />

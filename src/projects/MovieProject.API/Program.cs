@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieProject.DataAccess.Repositories.Concretes;
 using MovieProject.Service.Abstracts;
+using MovieProject.Service.BusinessRules.Categories;
 using MovieProject.Service.Concretes;
 using MovieProject.Service.Helpers;
 using MovieProject.Service.Mappers.Categories;
@@ -23,6 +24,7 @@ builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 builder.Services.AddScoped<IMovieService,MovieService>();
 builder.Services.AddScoped<IMovieRepository,MovieRepository>(); 
 builder.Services.AddScoped<ICloudinaryHelper,CloudinaryHelper>();   
+builder.Services.AddScoped<CategoryBusinessRules>();
 
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 

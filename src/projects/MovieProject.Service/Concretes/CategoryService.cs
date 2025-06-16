@@ -1,24 +1,28 @@
 ﻿
 
+using Core.CrossCuttingConcerns.Exceptions;
 using MovieProject.DataAccess.Repositories.Concretes;
 using MovieProject.Service.Abstracts;
+using MovieProject.Service.BusinessRules.Categories;
+using MovieProject.Service.Constans.Categories;
 using MovieProject.Service.Mappers.Categories;
 using MoviProject.DataAccess.Contexts;
 using MoviProject.DataAccess.Repositories.Abstracts;
 using MoviProject.Model.Dtos.Categories;
 using MoviProject.Model.Entities;
-
 namespace MovieProject.Service.Concretes;
 
 public sealed class CategoryService : ICategoryService
 {
    private readonly ICategoryRepository _categoryRepository;
     private readonly ICategoryMapper _categoryMapper;
+    private readonly CategoryBusinessRules _categoryBusinessRules;
 
-    public CategoryService(ICategoryRepository categoryRepository, ICategoryMapper categoryMapper)
+    public CategoryService(ICategoryRepository categoryRepository, ICategoryMapper categoryMapper, CategoryBusinessRules categoryBusinessRules)
     {
         _categoryRepository = categoryRepository;
         _categoryMapper = categoryMapper;
+        _categoryBusinessRules = categoryBusinessRules;
     }
 
 
@@ -37,6 +41,7 @@ public sealed class CategoryService : ICategoryService
         //{
         //    Name = dto.Name
         //} ;
+        _categoryBusinessRules.CategoryNameIsUnique(dto.Name);
         Category category = _categoryMapper.ConvertToEntity(dto);
         _categoryRepository.Add(category);
 
@@ -44,13 +49,17 @@ public sealed class CategoryService : ICategoryService
 
     public void Delete(int id)
     {
-       var category= _categoryRepository.GetById(id);
-        if (category == null) 
-        { 
-            //to do : exeption fırlat
-        }
 
+        //Category? category = _categoryRepository.GetById(id);
+        //if (category is null)
+        //{
+        //    throw new NotFoundException(CategoryMessages.NotFoundMesage);
+        //}
+        // _categoryRepository.Delete(category!);
+        _categoryBusinessRules.CategoryIsPresent(id);
+        var category = _categoryRepository.GetById(id);
         _categoryRepository.Delete(category!);
+
     }
 
     public List<CategoryResponseDto> GetAll()
@@ -71,23 +80,26 @@ public sealed class CategoryService : ICategoryService
 
     public CategoryResponseDto? GetById(int id)
     {
+        _categoryBusinessRules.CategoryIsPresent(id);
         Category? category=_categoryRepository.GetById(id);
-        if (category == null) 
-        { 
-            //todo : exception fırlat
-        }
+        //if (category == null) 
+        //{
+        //    throw new NotFoundException(CategoryMessages.NotFoundMesage);
+        //}
         //CategoryResponseDto? categoryResponseDto = new(category.Id,category.Name);
+       
         CategoryResponseDto? categoryResponseDto = _categoryMapper.ConvertToResponse(category);
         return categoryResponseDto;
     }
 
     public void Update(CategoryUpdateRequestDto dto)
     {
+        _categoryBusinessRules.CategoryIsPresent(dto.Id);
         Category? category = _categoryRepository.GetById(dto.Id);
-        if(category is  null)
-        {
-            //todo: exception fırlat
-        }
+        //if(category is  null)
+        //{
+        //    throw new NotFoundException(CategoryMessages.NotFoundMesage);
+        //}
        category.Name=dto.Name;  
         _categoryRepository.Update(category);
     }
