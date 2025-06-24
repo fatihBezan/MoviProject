@@ -1,5 +1,6 @@
 ﻿
 using Core.CrossCuttingConcerns.Exceptions;
+using Core.CrossCuttingConcerns.Exceptions.Types;
 using MovieProject.Service.Constans.Categories;
 using MoviProject.DataAccess.Repositories.Abstracts;
 
