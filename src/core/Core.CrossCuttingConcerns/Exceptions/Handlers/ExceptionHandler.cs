@@ -1,23 +1,35 @@
 ﻿
 
 using Core.CrossCuttingConcerns.Exceptions.Types;
+using Microsoft.AspNetCore.Http;
+
+//using Core.CrossCuttingConcerns.Exceptions.Types.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.CrossCuttingConcerns.Exceptions.Handlers;
 
 public abstract class ExceptionHandler
 {
-    public Task HandleExwceptionAsync(Exception exception)
+   
+
+    public Task HandleExceptionAsync(Exception exception)
     {
-       return exception switch
+        return exception switch
         {
-            BusinessException businessException => HandleExceptionAsync(businessException),
-            NotFoundException notFoundException => HandleExceptionAsync(notFoundException),
-           => HandleExceptionAsync(exception)
+            BusinessException businessException => HandleException(businessException),
+            NotFoundException notFoundException => HandleException(notFoundException),
+            //ValidationException validationException => HandleException(validationException),
+            _ => HandleException(exception)
         };
     }
 
-    protected abstract Task HandleExceptionAsync(NotFoundException notFoundException);
-    protected abstract Task HandleExceptionAsync(BusinessException businessException);
-    protected abstract Task HandleExceptionAsync(Exception exception);
+    // switch expression
 
+    protected abstract Task HandleException(NotFoundException notFoundException);
+    protected abstract Task HandleException(BusinessException businessException);
+
+    protected abstract Task HandleException(Exception exception);
+
+
+    //protected abstract Task HandleException(ValidationException exception);
 }

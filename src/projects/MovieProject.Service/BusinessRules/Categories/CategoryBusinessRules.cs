@@ -25,9 +25,10 @@ namespace MovieProject.Service.BusinessRules.Categories
         public void CategoryNameIsUnique(string name)
         {
             var category= categoryRepository.Any(x => x.Name.ToLower()== name.ToLower());
-            if (category)
+            if (category==null)
             {
                 throw new BusinessException(CategoryMessages.CategoryNameIsUniqueMessage);
+              
             }
         }
     }

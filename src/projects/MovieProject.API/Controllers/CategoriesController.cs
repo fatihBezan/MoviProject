@@ -27,17 +27,12 @@ public class CategoriesController : ControllerBase
     [HttpPost("add")]
     public IActionResult Add(CategoryAddRequestDto dto) 
     {
-        try
-        {
+      
+        
             _categoryService.Add(dto);
 
             return Ok("kategori başarı ile eklendi");
-        }
-        catch (BusinessException ex)
-        {
-
-            return BadRequest(ex.Message);
-        }
+     
        
     }
 
@@ -54,17 +49,9 @@ public class CategoriesController : ControllerBase
     [HttpGet("getbyid")]
     public IActionResult GetById(int id) 
     {
-        try
-        {
+        
             var response = _categoryService.GetById(id);
             return Ok(response);
-
-        }
-        catch (NotFoundException ex) 
-        {
-            return NotFound(ex.Message);
-        }
-
         
     }
 
@@ -72,33 +59,18 @@ public class CategoriesController : ControllerBase
 
     public IActionResult Update(CategoryUpdateRequestDto dto) 
     {
-        try
-        {
-            _categoryService.Update(dto);
+          _categoryService.Update(dto);
             return Ok("Kategori güncellendi");
-
-        }
-        catch (NotFoundException ex)
-        {
-
-            return NotFound(ex.Message);
-        }
     }
 
     [HttpDelete("delete")]
     public IActionResult Delete(int id)  
     {
 
-        try
-        {
+      
             _categoryService.Delete(id);
             return Ok("kategori silindi");
-        }
-        catch (NotFoundException ex)
-        {
-
-            return NotFound(ex.Message);
-        }
-        
+       
+       
     }
 }
