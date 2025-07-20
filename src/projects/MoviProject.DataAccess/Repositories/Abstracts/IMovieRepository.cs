@@ -5,7 +5,7 @@ using MoviProject.Model.Entities;
 
 namespace MoviProject.DataAccess.Repositories.Abstracts;
 
-public interface IMovieRepository: IRepository<Movie,Guid>
+public interface IMovieRepository: IRepository<Movie,Guid>,IAsyncRepository<Movie,Guid>
 {
 
 }

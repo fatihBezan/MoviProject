@@ -26,3 +26,4 @@ public  interface IRepository<TEntity,TId> where TEntity : Entity<TId>
     IQueryable<TEntity> Query();
 
 }
+

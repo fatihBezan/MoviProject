@@ -7,7 +7,7 @@ namespace MoviProject.DataAccess.Repositories.Abstracts;
 
 
 //crud 
-public interface ICategoryRepository: IRepository<Category,int>
+public interface ICategoryRepository: IRepository<Category,int>,IAsyncRepository<Category,int>
 {
  
 }
